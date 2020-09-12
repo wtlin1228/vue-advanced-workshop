@@ -20,29 +20,28 @@
       Vue.mixin({
         beforeCreate() {
           if (this.$options.validations) {
-            this.$options.computed = {
-              ...this.$options.computed,
-              ...{
-                $v() {
-                  let errors = []
-                  let valid = true
+            this.$options.computed = Object.assign({}, this.$options.computed, {
+              $v() {
+                let errors = []
+                let valid = true
+                const rules = this.$options.validations
 
-                  Object.keys(this.$options.validations).forEach((key) => {
-                    const { validate, message } = this.$options.validations[key]
-                    const newValue = this[key]
-                    if (!validate(newValue)) {
-                      valid = false
-                      errors.push(message(key, newValue))
-                    }
-                  })
-
-                  return {
-                    errors,
-                    valid,
+                Object.keys(rules).forEach((key) => {
+                  const rule = rules[key]
+                  const value = this[key]
+                  const result = rule.validate(value)
+                  if (!result) {
+                    valid = false
+                    errors.push(rule.message(key, value))
                   }
-                },
+                })
+
+                return {
+                  errors,
+                  valid,
+                }
               },
-            }
+            })
           }
         },
       })
@@ -58,7 +57,6 @@
     data: {
       text: "foo",
       email: "",
-      $v: {},
     },
     validations: {
       text: {

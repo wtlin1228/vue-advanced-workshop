@@ -11,8 +11,8 @@
     "url": "git+https://github.com/yyx990803/vue-advanced-workshop.git"
   },
   "dependencies": {
-    "jest": "^21.0.1",
-    "jsdom": "^11.2.0",
-    "vue": "^2.4.2"
+    "jest": "^21.2.1",
+    "jsdom": "^11.12.0",
+    "vue": "^2.6.12"
   }
 }
