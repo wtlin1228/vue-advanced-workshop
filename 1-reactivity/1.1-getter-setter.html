@@ -1,6 +1,6 @@
 <script>
   function convert(obj) {
-    for (key in obj) {
+    for (let key in obj) {
       let internalState = obj[key]
       Object.defineProperty(obj, key, {
         set(newValue) {
