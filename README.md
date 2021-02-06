@@ -2,6 +2,8 @@
 
 This is the companion repository to the Vue Advanced Workshop.
 
+Course Slide: https://drive.google.com/file/d/1qRPELYUnTJTJMkexvDhGXWwiihLads2l/view?usp=sharing
+
 ## Prerequisites
 
 - [Git](https://git-scm.com/)
